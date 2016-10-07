@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+
+		<!-- mui -->
+		<link type="text/css" rel="stylesheet" href="../css/mui.min.css"/>
+
+	</head>
+
+	<body>
+		<div class="mui-content-padded">
+			<div class="mui-input-row">
+				<input type="text" class="mui-input-clear" placeholder="标题" id="addTitle">
+			</div>
+			<div class="mui-input-row">
+				<input type="text" class="mui-input-clear" placeholder="分类" id="addCategory">
+			</div>
+			<div class="ui-table-view">
+				<ul id="image-list-element" class="mui-table-view dlist">
+					<li id="empty-element" class="mui-table-view-cell empty-item">
+							无图片记录
+					</li>
+				</ul>
+			</div>
+			
+			<div class="mui-button-row">
+				<button class="mui mui-btn-warning" get-image-btn">拍照</button>
+				<button class="mui-btn mui-btn-primary add-item-btn">添加</button>
+				<div class="mui-btn mui-btn-danger clear-history-btn">清空图片</div>
+			</div>
+		</div>
+		
+		<!-- mui -->
+		<script type="text/javascript" src="../js/mui.min.js"></script>
+		<!-- jquery -->
+		<script type="text/javascript" src="../js/lib/jquery/jquery-1.11.2.min.js"></script>
+		<!-- common.js -->
+		<script type="text/javascript" src="../js/app/common.js"></script>
+		<!-- app -->
+		<script type="text/javascript" src="../js/app/add.js"></script>
+	</body>
+</html>
