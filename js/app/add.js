@@ -34,6 +34,8 @@
 
 		imageListElement.empty();
 		imageListElement.append('<li id="empty-element" class="mui-table-view-cell">无历史记录</li>');
+		
+		imageList.length = 0;
 	}
 
 	function addItem() {
