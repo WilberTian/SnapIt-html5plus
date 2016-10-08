@@ -89,7 +89,7 @@ function generateListItem(data){
 			'<div class="mui-slider-handle">' + 
 				'<div class="mui-media-body">' + 
 					title + 
-					'<p class="mui-ellipsis">'+category+'</p>' + 
+					'<p class="mui-badge mui-badge-primary">'+category+'</p>' + 
 				'</div>' + 
 			'</div>' +
 		'</li>';

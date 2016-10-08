@@ -28,7 +28,7 @@ mui.plusReady(function(){
 
 
 function updateMenuHandler(){
-	var $ul = $('#donelist').empty();
+	var $ul = $('#menu-item-list').empty();
 	snapIt.common.query(db, 'select category, COUNT(category) as numOfCategory from snap_it group by category', function(res){
 
 		for (i = 0; i < res.rows.length; i++) {
