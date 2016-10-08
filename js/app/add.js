@@ -8,16 +8,16 @@ var imgViewer = null;
 
 
 mui.plusReady(function(){
-	//resetPage();
+	imageListElement=$('#image-list-element');
+	
+	resetPage();
 	snapIt.common.on('.add-item-btn', 'tap', addItem);
 	snapIt.common.on('.take-image-btn', 'tap', takeImage);
 	snapIt.common.on('.clear-history-btn', 'tap', cleanHistory);
 
 	// image viewer page
 	imgViewer = mui.preload(snapIt.common.page('imgViewer', {popGesture:'none'}));
-	
-	imageListElement=document.getElementById("image-list-element");
-	emptyElement=document.getElementById("empty-element");
+
 });
 
 
@@ -25,9 +25,8 @@ function resetPage(){
 	$('#addCategory').val('');
 	$('#addTitle').val('');
 
-	//imageListElement.empty();
-	//imageListElement.innerHTML = '<li class="mui-table-view-cell ditem-empty">无历史记录</li>';
-
+	imageListElement.empty();
+	imageListElement.append('<li id="empty-element" class="mui-table-view-cell">无历史记录</li>');
 }
 
 
@@ -54,13 +53,12 @@ function showImgViewer(ele) {
 }
 
 var gentry=null,w=null;
-var imageListElement=null,emptyElement=null;
+var imageListElement=null;
 var imageList = [];
 
 function takeImage() {
 	var cmr = plus.camera.getCamera();
 	cmr.captureImage( function ( p ) {
-		snapIt.common.alert( "成功："+p );
 		plus.io.resolveLocalFileSystemURL( p, function ( entry ) {
 			createItem( entry );
 		}, function ( e ) {
@@ -72,13 +70,12 @@ function takeImage() {
 }
 
 function cleanHistory() {
-	imageListElement.innerHTML = '<li class="mui-table-view-cell ditem-empty">无历史记录</li>';
-	emptyElement = document.getElementById( "empty-element" );
+	$('.image-item').remove();
 	
-	imageList.clear();
+	$('#empty-element').show();
+	imageList.length = 0;
 	
-
-	snapIt.common.alert( "清空拍照录像历史记录：" );
+	// snapIt.common.alert( "清空拍照录像历史记录：" );
 	gentry.removeRecursively( function () {
 		// Success
 		snapIt.common.alert( "成功！" );
@@ -88,16 +85,19 @@ function cleanHistory() {
 }
 		
 function createItem( entry ) {
+	qmask.show();
 	var li = document.createElement("li");
 	li.className = "mui-table-view-cell image-item";
 	li.innerHTML = '<a class="mui-navigate-right"></a>';
 	li.setAttribute( "onclick", "showImgViewer(this);" );
-	imageListElement.insertBefore( li, emptyElement.nextSibling );
+	imageListElement.prepend( li );
 	li.querySelector(".mui-navigate-right").innerText = entry.name;
 	li.entry = entry;
 
 	// 设置空项不可见
-	emptyElement.style.display = "none";
+	$('#empty-element').hide();
 	
 	imageList.push(entry.name);
+	
+	qmask.hide();
 }

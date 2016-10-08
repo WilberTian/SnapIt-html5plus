@@ -1,100 +1,102 @@
 {
-	"index.html": {
-		"resources": [
-			"js/lib/qiao/qiao.h.js",
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css",
-			"js/app/index.js",
-			"js/lib/jquery/jquery-1.11.2.min.js",
-			"views/list.html",
-			"js/lib/qiao/snapIt.h.js"
-		],
-		"refer": [
-			"views/add.html",
-			"views/detail.html",
-			"views/menu.html",
-			"views/list.html"
-		]
-	},
-	"views/index.html": {
-		"resources": [
-			"js/lib/qiao/qiao.h.js",
-			"views/list.html",
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css",
-			"js/app/index.js",
-			"js/lib/jquery/jquery-1.11.2.min.js",
-			"js/app/common.js",
-			"js/lib/qiao/snapIt.h.js"
-		],
-		"refer": [
-			"views/add.html",
-			"views/list.html",
-			"views/detail.html",
-			"views/menu.html"
-		]
-	},
-	"views/add.html": {
-		"resources": [
-			"js/app/add.js",
-			"js/app/common.js",
-			"js/mui.min.js",
-			"css/mui.min.css",
-			"js/lib/jquery/jquery-1.11.2.min.js",
-			"fonts/mui.ttf"
-		],
-		"refer": [
-			"views/imgViewer.html"
-		]
-	},
-	"views/list.html": {
-		"resources": [
-			"js/lib/qmask/qmask-3.0.css",
-			"js/lib/qmask/qmask-3.0.js",
-			"js/app/list.js",
-			"js/app/common.js",
-			"js/mui.min.js",
-			"css/mui.min.css",
-			"js/lib/jquery/jquery-1.11.2.min.js"
-		],
-		"refer": []
-	},
-	"views/detail.html": {
-		"resources": [
-			"js/app/detail.js",
-			"js/app/common.js",
-			"js/mui.min.js",
-			"css/mui.min.css",
-			"js/lib/jquery/jquery-1.11.2.min.js",
-			"js/lib/qmask/qmask-3.0.css",
-			"js/lib/qmask/qmask-3.0.js",
-			"fonts/mui.ttf"
-		],
-		"refer": []
-	},
-	"views/menu.html": {
-		"resources": [
-			"css/app/menu.css",
-			"js/app/menu.js",
-			"js/app/common.js",
-			"js/mui.min.js",
-			"css/mui.min.css",
-			"js/lib/jquery/jquery-1.11.2.min.js"
-		],
-		"refer": []
-	},
-	"views/imgViewer.html": {
-		"resources": [
-			"js/app/imgViewer.js",
-			"js/mui.min.js",
-			"css/mui.min.css",
-			"js/lib/qmask/qmask-3.0.css",
-			"js/lib/qmask/qmask-3.0.js",
-			"js/app/common.js",
-			"fonts/mui.ttf"
-		],
-		"refer": []
-	}
+  "index.html": {
+    "resources": [
+      "js/lib/qiao/qiao.h.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/app/index.js",
+      "js/lib/jquery/jquery-1.11.2.min.js",
+      "views/list.html",
+      "js/lib/qiao/snapIt.h.js"
+    ],
+    "refer": [
+      "views/add.html",
+      "views/detail.html",
+      "views/menu.html",
+      "views/list.html"
+    ]
+  },
+  "views/index.html": {
+    "resources": [
+      "js/lib/qiao/qiao.h.js",
+      "views/list.html",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/app/index.js",
+      "js/lib/jquery/jquery-1.11.2.min.js",
+      "js/app/common.js",
+      "js/lib/qiao/snapIt.h.js"
+    ],
+    "refer": [
+      "views/add.html",
+      "views/list.html",
+      "views/detail.html",
+      "views/menu.html"
+    ]
+  },
+  "views/add.html": {
+    "resources": [
+      "js/app/add.js",
+      "js/app/common.js",
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "js/lib/jquery/jquery-1.11.2.min.js",
+      "fonts/mui.ttf",
+      "js/lib/qmask/qmask-3.0.css",
+      "js/lib/qmask/qmask-3.0.js"
+    ],
+    "refer": [
+      "views/imgViewer.html"
+    ]
+  },
+  "views/list.html": {
+    "resources": [
+      "js/lib/qmask/qmask-3.0.css",
+      "js/lib/qmask/qmask-3.0.js",
+      "js/app/list.js",
+      "js/app/common.js",
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "js/lib/jquery/jquery-1.11.2.min.js"
+    ],
+    "refer": []
+  },
+  "views/detail.html": {
+    "resources": [
+      "js/app/detail.js",
+      "js/app/common.js",
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "js/lib/jquery/jquery-1.11.2.min.js",
+      "js/lib/qmask/qmask-3.0.css",
+      "js/lib/qmask/qmask-3.0.js",
+      "fonts/mui.ttf"
+    ],
+    "refer": []
+  },
+  "views/menu.html": {
+    "resources": [
+      "css/app/menu.css",
+      "js/app/menu.js",
+      "js/app/common.js",
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "js/lib/jquery/jquery-1.11.2.min.js"
+    ],
+    "refer": []
+  },
+  "views/imgViewer.html": {
+    "resources": [
+      "js/app/imgViewer.js",
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "js/lib/qmask/qmask-3.0.css",
+      "js/lib/qmask/qmask-3.0.js",
+      "js/app/common.js",
+      "fonts/mui.ttf"
+    ],
+    "refer": []
+  }
 }

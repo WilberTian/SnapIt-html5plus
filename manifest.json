@@ -187,7 +187,9 @@
 					"js/lib/jquery/jquery-1.11.2.min.js",
 					"fonts/mui.ttf",
 					"css/mui.min.css",
-					"js/app/common.js"
+					"js/app/common.js",
+					"js/lib/qmask/qmask-3.0.css",
+					"js/lib/qmask/qmask-3.0.js"
 				],
 				"refer": [
 					"views/imgViewer.html"

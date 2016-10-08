@@ -48,7 +48,6 @@ mui.plusReady(function(){
 	// 删除
 	snapIt.common.on('.delete-item-btn', 'tap', deleteItemHandler);
 	
-	
 
 	window.addEventListener('addItemEvent', addItemHandler);
 	window.addEventListener('updateListEvent', updateListHandler);
@@ -89,7 +88,7 @@ function generateListItem(data){
 			'<div class="mui-slider-handle">' + 
 				'<div class="mui-media-body">' + 
 					title + 
-					'<p class="mui-badge mui-badge-primary">'+category+'</p>' + 
+					'<p class="mui-ellipsis"><span class="mui-badge">'+category+'</span></p>' + 
 				'</div>' + 
 			'</div>' +
 		'</li>';
@@ -102,7 +101,7 @@ function showList(ul){
 
 
 function addItemHandler(event){
-	snapIt.common.indexPage().evalJS("hideBackBtn();");
+
 	var title = event.detail.title;
 	var category = event.detail.category;
 	var images = event.detail.images;
