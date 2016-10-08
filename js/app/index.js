@@ -47,7 +47,7 @@
 			snapIt.common.show('add', 'slide-in-bottom', 300);
 		});
 		main.addEventListener('maskClick', toggleMenu);
-		main.addEventListener('toggleMenuEvent', toggleMenu);
+		window.addEventListener('toggleMenuEvent', toggleMenu);
 
 		// exit app
 		mui.back = function() {
