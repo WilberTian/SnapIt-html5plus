@@ -1,19 +1,21 @@
-var w=null;
-
 mui.init({
 	keyEventBind : {
-		backbutton : false,
 		menubutton : false
 	}
 });
 
 
 mui.plusReady(function(){
-	w=plus.nativeUI.showWaiting();
+	window.addEventListener('displayImageEvent', displayImageHandler);
 });
 
+function displayImageHandler(event) {
+	var imageSrc = event.detail.src;
+	document.getElementById("img").src=imageSrc;
+}
+
 function imgLoaded() {
-	w&&(w.close(),w=null);
+	qmask.show();
 	var b = document.body;
 	var img = document.getElementById("img");
 	var pb = b.clientHeight/b.clientWidth,
@@ -24,16 +26,13 @@ function imgLoaded() {
 		img.style.height = "100%";
 	}
 	b.style.lineHeight = b.clientHeight+"px";
+	img.style.visibility = 'visible';
+	qmask.hide();
 }
 
 function imgError(){
-	w&&(w.close(),w=null);
 	document.getElementById("img").style.display = "none";
 	plus.nativeUI.alert( "无效的图片资源", function(){
 		back();
 	} );
-}
-
-function loadMedia(src){
-	document.getElementById("img").src=src;
 }

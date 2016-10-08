@@ -9,12 +9,22 @@
 
 	</head>
 	<body>
-		<div class="mui-content-padded">
-			<img id="img" onload="imgLoaded();" onerror="imgError();"/>
+		<!-- qmask -->
+		<link rel="stylesheet" href="../js/lib/qmask/qmask-3.0.css" />
+		<script type="text/javascript" src="../js/lib/qmask/qmask-3.0.js" ></script>
+		
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">预览</h1>
+		</header>
+		<div class="mui-content-padded" style="margin-top: 55px;">
+			<img id="img" onload="imgLoaded();" onerror="imgError();" style="visibility: hidden;"/>
 		</div>
 		
 		<!-- mui -->
 		<script type="text/javascript" src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/app/common.js"></script>
 		<script type="text/javascript" src="../js/app/imgViewer.js"></script>
+		
 	</body>
 </html>

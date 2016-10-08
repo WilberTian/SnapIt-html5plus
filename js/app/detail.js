@@ -1,6 +1,5 @@
 mui.init({
 	keyEventBind : {
-		backbutton : false,
 		menubutton : false
 	}
 });

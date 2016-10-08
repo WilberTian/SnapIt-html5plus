@@ -1,17 +1,20 @@
 mui.init({
 	keyEventBind : {
-		backbutton : false,
 		menubutton : false
 	}
 });
+
+var imgViewer = null;
 
 
 mui.plusReady(function(){
 	//resetPage();
 	snapIt.common.on('.add-item-btn', 'tap', addItem);
-	snapIt.common.on('.get-image-btn', 'tap', getImage);
+	snapIt.common.on('.take-image-btn', 'tap', takeImage);
 	snapIt.common.on('.clear-history-btn', 'tap', cleanHistory);
-	
+
+	// image viewer page
+	imgViewer = mui.preload(snapIt.common.page('imgViewer', {popGesture:'none'}));
 	
 	imageListElement=document.getElementById("image-list-element");
 	emptyElement=document.getElementById("empty-element");
@@ -27,28 +30,34 @@ function resetPage(){
 
 }
 
-// 添加待办事项
+
 function addItem(){
 	var title = $.trim($('#addTitle').val());
 	var category = $.trim($('#addCategory').val()) ? $.trim($('#addCategory').val()) : '未分类';
 	var images = imageList.toString();
 	
 	if(!title){
-		snapIt.common.alert('请填写待办事项标题！');		
+		snapIt.common.alert('请填写标题！');		
 	}else{
 		snapIt.common.getPage('add').hide();
 		resetPage();
 		snapIt.common.fire('list', 'addItemEvent', {title:title, category:category, images:images});
 		
-		
 	}
+}
+
+
+function showImgViewer(ele) {
+	snapIt.common.show('imgViewer', 'slide-in-bottom', 300);
+
+	snapIt.common.fire('imgViewer', 'displayImageEvent', {src:ele.entry.toLocalURL()});
 }
 
 var gentry=null,w=null;
 var imageListElement=null,emptyElement=null;
 var imageList = [];
 
-function getImage() {
+function takeImage() {
 	var cmr = plus.camera.getCamera();
 	cmr.captureImage( function ( p ) {
 		snapIt.common.alert( "成功："+p );
@@ -68,7 +77,7 @@ function cleanHistory() {
 	
 	imageList.clear();
 	
-	// 删除音频文件
+
 	snapIt.common.alert( "清空拍照录像历史记录：" );
 	gentry.removeRecursively( function () {
 		// Success
@@ -80,10 +89,10 @@ function cleanHistory() {
 		
 function createItem( entry ) {
 	var li = document.createElement("li");
-	li.className = "mui-table-view-cell ditem";
+	li.className = "mui-table-view-cell image-item";
 	li.innerHTML = '<a class="mui-navigate-right"></a>';
-	li.setAttribute( "onclick", "displayFile(this);" );
-	imageListElement.insertBefore( li, le.nextSibling );
+	li.setAttribute( "onclick", "showImgViewer(this);" );
+	imageListElement.insertBefore( li, emptyElement.nextSibling );
 	li.querySelector(".mui-navigate-right").innerText = entry.name;
 	li.entry = entry;
 
@@ -91,28 +100,4 @@ function createItem( entry ) {
 	emptyElement.style.display = "none";
 	
 	imageList.push(entry.name);
-}
-
-
-function displayFile( li ) {
-	if ( w ) {
-		snapIt.common.alert( "重复点击！" );
-		return;
-	}
-	if ( !li || !li.entry ) {
-		snapIt.common.alert( "无效的媒体文件" );
-		return;
-	}
-	var name = li.entry.name;
-	var url = "/views/image_viewer.html";
-
-	w=plus.webview.create(url,url,{hardwareAccelerated:true,scrollIndicator:'none',scalable:true,bounce:"all"});
-	w.addEventListener( "loaded", function(){
-		w.evalJS( "loadMedia('"+li.entry.toLocalURL()+"')" );
-		//w.evalJS( "loadMedia(\""+"http://localhost:13131/_doc/camera/"+name+"\")" );
-	}, false );
-	w.addEventListener( "close", function() {
-		w = null;
-	}, false );
-	w.show( "pop-in" );
 }

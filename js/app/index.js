@@ -1,4 +1,3 @@
-// 初始化
 mui.init({
 	subpages : [snapIt.common.normalPage('list')]
 });
@@ -31,23 +30,23 @@ mui.plusReady(function(){
 	mui.menu = toggleMenu;
 	
 	// add page
-	add = mui.preload(snapIt.common.normalPage('add', {popGesture:'none'}));
-	snapIt.common.on('.add-page-btn', 'tap', showAdd);
-	snapIt.common.on('.mui-icon-back', 'tap', hideAdd);
+	add = mui.preload(snapIt.common.page('add', {popGesture:'none'}));
+	snapIt.common.on('.add-page-btn', 'tap', function(){
+		snapIt.common.show('add', 'slide-in-bottom', 300);
+	});
 	
 	// detail page
-	detail = mui.preload(snapIt.common.normalPage('detail', {popGesture:'none'}));
+	detail = mui.preload(snapIt.common.page('detail', {popGesture:'none'}));
 	
 	// exit app
 	mui.back = function(){
-		if($('.add-page-btn').is(':hidden')){
-			hideAdd();	
-		}else if(showMenu){
+		if(showMenu){
 			closeMenu();
 		}else{
 			snapIt.common.exit();
 		}
 	};
+	
 });
 
 // menu
@@ -91,26 +90,6 @@ function closeMenu(){
 		menu.hide();
 	}, 300);
 }
-
-
-function showAdd(){
-	showBackBtn();
-	snapIt.common.show('add', 'slide-in-bottom', 300);
-}
-function hideAdd(){
-	hideBackBtn();
-	snapIt.common.getPage('add').hide();
-	snapIt.common.getPage('detail').hide();
-}
-function showBackBtn(){
-	$('.menu-page-btn').removeClass('mui-icon-bars').addClass('mui-icon-back');
-	$('.add-page-btn').hide();
-}
-function hideBackBtn(){
-	$('.menu-page-btn').removeClass('mui-icon-back').addClass('mui-icon-bars');
-	$('.add-page-btn').show();
-}
-
 
 function setColor(color){
 	if(mui.os.ios && color) plus.navigator.setStatusBarBackground(color);

@@ -55,7 +55,7 @@ mui.plusReady(function(){
 });
 
 
-// 初始化待办事项
+
 function updateListHandler(event){
 	qmask.show();
 
