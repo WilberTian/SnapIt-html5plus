@@ -20,6 +20,7 @@
 		snapIt.common.on('.add-item-btn', 'tap', addItem);
 		snapIt.common.on('.take-image-btn', 'tap', takeImage);
 		snapIt.common.on('.clear-history-btn', 'tap', cleanHistory);
+		snapIt.common.on('.image-item', 'tap', showImgViewer);
 
 		// image viewer page
 		imgViewer = mui.preload(snapIt.common.page('imgViewer', {
@@ -57,11 +58,11 @@
 		}
 	}
 
-	function showImgViewer(ele) {
+	function showImgViewer() {
 		snapIt.common.show('imgViewer', 'slide-in-bottom', 300);
 
 		snapIt.common.fire('imgViewer', 'displayImageEvent', {
-			src: ele.entry.toLocalURL()
+			src: this.entry.toLocalURL()
 		});
 	}
 
@@ -101,7 +102,6 @@
 		var li = document.createElement("li");
 		li.className = "mui-table-view-cell image-item";
 		li.innerHTML = '<a class="mui-navigate-right"></a>';
-		li.setAttribute("onclick", "showImgViewer(this);");
 		imageListElement.prepend(li);
 		li.querySelector(".mui-navigate-right").innerText = entry.name;
 		li.entry = entry;
