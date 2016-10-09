@@ -3,7 +3,7 @@
 	root.snapIt = {};
 	root.snapIt.common = {};
 	root.db = null;
-	
+
 	snapIt.common.normalStyle = {
 		top: '45px',
 		bottom: 0
@@ -21,9 +21,9 @@
 		options.url = url;
 		return options;
 	};
-	snapIt.common.getPage = function(id){                     
-       return id ? plus.webview.getWebviewById(id) : null;
-	};                                                        
+	snapIt.common.getPage = function(id) {
+		return id ? plus.webview.getWebviewById(id) : null;
+	};
 	snapIt.common.indexPage = function() {
 		return plus.webview.getWebviewById(plus.runtime.appid);
 	};
@@ -101,6 +101,24 @@
 		}, opt.title, opt.content, opt.cbtn);
 	};
 
+	snapIt.common.removeLocalImgFile = function(imageList) {
+		var imagePathList = imageList.map(function(path) {
+			return '_doc/camera/' + path;
+		});
+
+		imagePathList.forEach(function(path) {
+			plus.io.resolveLocalFileSystemURL(path, function(entry) {
+				entry.remove(function(){
+					
+				}, function(e){
+					snapIt.common.alert("刪除图片错误：" + e.message);
+				});
+			}, function(e) {
+				snapIt.common.alert("读取拍照文件错误：" + e.message);
+			});
+		});
+	};
+
 	// web sql
 	snapIt.common.db = function(name, size) {
 		var db_name = name ? name : 'db_snapIt';
@@ -130,6 +148,6 @@
 			plus.runtime.quit();
 		});
 	};
-	
+
 	db = snapIt.common.db();
 })();

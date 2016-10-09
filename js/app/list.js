@@ -16,7 +16,6 @@
 		// get snap item list
 		updateListHandler();
 
-
 		// show item detail
 		snapIt.common.on('#snap-item-list li', 'tap', function() {
 			snapIt.common.fire('detail', 'displayItemDetail', {
@@ -28,7 +27,7 @@
 		snapIt.common.on('.edit-item-btn', 'tap', function() {
 
 			/*
-			*/
+			 */
 		});
 
 		// longtap to delete item
@@ -112,6 +111,19 @@
 
 	function deleteItemHandler() {
 		if(tapId) {
+
+			var sql = 'select * from snap_it where id=' + tapId;
+			snapIt.common.query(db, sql, function(res) {
+				if(res.rows.length > 0) {
+					var data = res.rows.item(0);
+					if(data.images !== '') {
+						var imagePathList = data.images.split(',');
+						snapIt.common.removeLocalImgFile(imagePathList);
+					}
+
+				}
+			});
+
 			snapIt.common.update(db, 'delete from snap_it where id=' + tapId);
 			snapIt.common.pop();
 			updateListHandler();

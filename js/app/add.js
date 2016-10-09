@@ -5,8 +5,7 @@
 		}
 	});
 
-	var imgViewer = null;
-	var gentry = null;
+
 	var w = null;
 	var imageListElement = null;
 	var imageList = [];
@@ -23,7 +22,7 @@
 		snapIt.common.on('.image-item', 'tap', showImgViewer);
 
 		// image viewer page
-		imgViewer = mui.preload(snapIt.common.page('imgViewer', {
+		mui.preload(snapIt.common.page('imgViewer', {
 			popGesture: 'none'
 		}));
 
@@ -86,15 +85,10 @@
 		$('.image-item').remove();
 
 		$('#empty-element').show();
+		
+		snapIt.common.removeLocalImgFile(imageList);
 		imageList.length = 0;
 
-		// snapIt.common.alert( "清空拍照录像历史记录：" );
-		gentry.removeRecursively(function() {
-			// Success
-			snapIt.common.alert("成功！");
-		}, function(e) {
-			snapIt.common.alert("失败：" + e.message);
-		});
 	}
 
 	function createItem(entry) {
