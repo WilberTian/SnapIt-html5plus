@@ -22,7 +22,7 @@
 	function _imgLoaded() {
 		qmask.show();
 		var img = document.getElementById("img");
-		img.style.width = "100%";
+		// img.style.width = "100%";
 		img.style.visibility = 'visible';
 		qmask.hide();
 	}
